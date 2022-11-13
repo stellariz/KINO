@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">КИНО</string>
+    <string name="title_activity_slide_item">SlideItem</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="popular_today">Popular today</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="description">Description</string>
+</resources>
