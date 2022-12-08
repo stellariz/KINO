@@ -1,4 +1,4 @@
-package com.stellariz.testapp.mainPage
+package com.stellariz.testapp.holders
 
 import android.widget.ImageView
 import android.widget.TextView

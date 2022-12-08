@@ -1,4 +1,4 @@
-package com.stellariz.testapp.moviePage
+package com.stellariz.testapp.holders
 
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView

@@ -1,4 +1,4 @@
-package com.stellariz.testapp.moviePage
+package com.stellariz.testapp.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,11 +8,18 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
+import com.like.LikeButton
+import com.like.OnLikeListener
 import com.squareup.picasso.Picasso
+import com.stellariz.testapp.adapters.MovieGenresAdapter
 import com.stellariz.testapp.config.ApiTokenHolder
+import com.stellariz.testapp.dao.LikedMovieDao
+import com.stellariz.testapp.databases.LikedMovieDatabase
 import com.stellariz.testapp.databinding.MovieInfoActivityBinding
-import com.stellariz.testapp.model.MovieFullData
-import com.stellariz.testapp.tmdbService.TMDBService.tmdbService
+import com.stellariz.testapp.entities.LikedMovie
+import com.stellariz.testapp.model.dto.MovieFullData
+import com.stellariz.testapp.service.TMDBService.tmdbService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -25,6 +32,10 @@ class MovieInfoActivity : AppCompatActivity() {
     private lateinit var movieTagline: TextView
     private lateinit var movieOverview: TextView
     private lateinit var rvMovieGenres: RecyclerView
+    private lateinit var lbLike: LikeButton
+
+    private lateinit var db : LikedMovieDatabase
+    private lateinit var likedMovieDao: LikedMovieDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +43,7 @@ class MovieInfoActivity : AppCompatActivity() {
         val view = binding.layoutMovieInfo
         setContentView(view)
         initMovieView()
+        setOnClickLikeListener()
         initRecyclerViewGenres()
         loadMovieInfo()
     }
@@ -47,6 +59,28 @@ class MovieInfoActivity : AppCompatActivity() {
         rvMovieGenres = binding.rvMovieGenres
         rvMovieGenres.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    private fun setOnClickLikeListener() {
+        val movieId = intent.getIntExtra("movieId", -1)
+        lbLike = binding.likeButton
+        db = Room.databaseBuilder(
+            applicationContext,
+            LikedMovieDatabase::class.java, "liked_movies"
+        ).allowMainThreadQueries().build()
+        likedMovieDao = db.likedMovieDao()
+        lbLike.isLiked = likedMovieDao.isMovieLiked(movieId)
+        lbLike.setOnLikeListener(object : OnLikeListener {
+            override fun liked(likeButton: LikeButton?) {
+                Log.d("DB", "Inserting movie with [id]: $movieId")
+                likedMovieDao.insertAll(LikedMovie(movieId))
+            }
+
+            override fun unLiked(likeButton: LikeButton?) {
+                Log.d("DB", "Deleting movie with [id]: $movieId")
+                likedMovieDao.deleteLikedMovie(LikedMovie(movieId))
+            }
+        })
     }
 
     @SuppressLint("CheckResult")

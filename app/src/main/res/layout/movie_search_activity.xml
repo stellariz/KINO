@@ -5,7 +5,7 @@
     android:id="@+id/layoutMovieSearch"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".searchPage.MovieSearchActivity">
+    tools:context=".activities.MovieSearchActivity">
 
     <SearchView
         android:id="@+id/svMovieSearch"

@@ -1,4 +1,4 @@
-package com.stellariz.testapp.tmdbService
+package com.stellariz.testapp.service
 
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

@@ -1,4 +1,4 @@
-package com.stellariz.testapp.model
+package com.stellariz.testapp.model.dto
 
 data class MovieBriefViewData(
     val poster_path: String,

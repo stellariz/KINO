@@ -1,7 +1,7 @@
-package com.stellariz.testapp.tmdbService
+package com.stellariz.testapp.service
 
-import com.stellariz.testapp.model.MovieFullData
-import com.stellariz.testapp.model.PopularMovies
+import com.stellariz.testapp.model.dto.MovieFullData
+import com.stellariz.testapp.model.dto.PopularMovies
 import io.reactivex.Observable
 import retrofit2.http.*
 

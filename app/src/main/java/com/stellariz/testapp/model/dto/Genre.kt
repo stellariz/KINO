@@ -1,4 +1,4 @@
-package com.stellariz.testapp.model
+package com.stellariz.testapp.model.dto
 
 data class Genre(
     val id: Long,

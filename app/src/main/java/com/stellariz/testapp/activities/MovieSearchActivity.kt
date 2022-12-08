@@ -1,4 +1,4 @@
-package com.stellariz.testapp.searchPage
+package com.stellariz.testapp.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -7,11 +7,11 @@ import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.stellariz.testapp.R
 import com.stellariz.testapp.config.ApiTokenHolder
 import com.stellariz.testapp.databinding.MovieSearchActivityBinding
-import com.stellariz.testapp.model.MovieBriefViewData
-import com.stellariz.testapp.tmdbService.TMDBService.tmdbService
+import com.stellariz.testapp.model.dto.MovieBriefViewData
+import com.stellariz.testapp.adapters.SuggestedMoviesAdapter
+import com.stellariz.testapp.service.TMDBService.tmdbService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

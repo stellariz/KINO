@@ -1,10 +1,11 @@
-package com.stellariz.testapp.moviePage
+package com.stellariz.testapp.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.stellariz.testapp.databinding.GenreItemViewBinding
-import com.stellariz.testapp.model.Genre
+import com.stellariz.testapp.holders.GenresHolder
+import com.stellariz.testapp.model.dto.Genre
 
 class MovieGenresAdapter (private var movieGenres: List<Genre>)
     : RecyclerView.Adapter<GenresHolder>() {

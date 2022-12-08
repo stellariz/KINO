@@ -1,4 +1,4 @@
-package com.stellariz.testapp.searchPage
+package com.stellariz.testapp.adapters
 
 import android.content.Intent
 import android.util.Log
@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.stellariz.testapp.databinding.MovieSearchViewBinding
-import com.stellariz.testapp.moviePage.MovieInfoActivity
-import com.stellariz.testapp.model.MovieBriefViewData
+import com.stellariz.testapp.activities.MovieInfoActivity
+import com.stellariz.testapp.model.dto.MovieBriefViewData
+import com.stellariz.testapp.holders.MoviesSearchViewHolder
 
 class SuggestedMoviesAdapter(
     private var suggestedMovies: List<MovieBriefViewData>
